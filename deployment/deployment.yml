@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: insurance-react-frontend
+  labels:
+    app: insurance-react-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: insurance-react-frontend
+  template:
+    metadata:
+      labels:
+        app: insurance-react-frontend
+    spec:
+      containers:
+      - name: frontend
+        image: mayank071293/insurance-react-frontend
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "1024Mi"
+            cpu: "500m" 
+      restartPolicy: Always   
